@@ -1,0 +1,13 @@
+.ipynb_checkpoints/*
+*.pyc
+.idea/*
+*.txt
+*.json
+*.doc
+*.docx
+*.pdf
+!example/example.pdf
+!memory/315b4f4c655530196ef5f4f6f1d1f0b57d24fa2b08ff006c44b535d50499b487.json
+!.gitkeep
+!requirements.txt
+!openai_api_key.txt
