@@ -137,7 +137,7 @@ def chatGPT_api(messages):
 	return completion.choices[0].message
 
 
-def get_content(q, retrieved_text):
+def get_qa_content(q, retrieved_text):
 	content = "After reading some relevant passage fragments from the same document, please respond to the following query. Note that there may be typographical errors in the passages due to the text being fetched from a PDF file or web page."
 
 	content += "\nQuery: " + q
@@ -154,7 +154,7 @@ def generate_answer(q, retrieved_indices, info):
 		try:
 			sorted_indices = sorted(retrieved_indices)
 			retrieved_text = [info[idx]["text"] for idx in sorted_indices]
-			content = get_content(q, retrieved_text)
+			content = get_qa_content(q, retrieved_text)
 			messages = [
 				{"role": "user", "content": content}
 			]

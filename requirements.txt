@@ -1,0 +1,9 @@
+beautifulsoup4
+jsonlines
+numpy
+openai==0.27.2
+PyMuPDF
+python_docx
+Requests
+tqdm
+validators
