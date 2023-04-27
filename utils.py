@@ -38,9 +38,7 @@ def get_text(text_path):
 		response = requests.get(url, headers=headers)
 		if response.status_code == 200:
 			soup = BeautifulSoup(response.content, "html.parser")
-			body = soup.find('body')
-			body_contents = [content.text for content in body.contents]
-			text = '\n'.join(body_contents)
+			text = soup.get_text()
 		else:
 			raise ValueError(f"Invalid URL! Status code {response.status_code}.")
 	elif suffix == ".pdf":
