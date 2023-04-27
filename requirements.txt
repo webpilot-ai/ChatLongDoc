@@ -4,7 +4,7 @@ numpy
 openai==0.27.2
 PyMuPDF
 python_docx
-Requests
+requests
 tqdm
 validators
 tiktoken
