@@ -7,3 +7,4 @@ python_docx
 Requests
 tqdm
 validators
+tiktoken

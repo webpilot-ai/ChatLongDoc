@@ -12,9 +12,21 @@ import numpy as np
 from numpy.linalg import norm
 import os
 import hashlib
+import tiktoken
+tokenizer = tiktoken.get_encoding("cl100k_base")
 with open("openai_api_key.txt", 'r', encoding='utf8') as f:
 	openai.api_key = f.readlines()[0].strip()
 print("Loaded openai api key.")
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 
 
@@ -22,12 +34,15 @@ def get_text(text_path):
 	url = text_path
 	suffix = os.path.splitext(text_path)[-1]
 	if validators.url(url):
-		response = requests.get(url)
+		headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",}
+		response = requests.get(url, headers=headers)
 		if response.status_code == 200:
 			soup = BeautifulSoup(response.content, "html.parser")
-			text = soup.get_text()
+			body = soup.find('body')
+			body_contents = [content.text for content in body.contents]
+			text = '\n'.join(body_contents)
 		else:
-			raise ValueError("Invalid URL!")
+			raise ValueError(f"Invalid URL! Status code {response.status_code}.")
 	elif suffix == ".pdf":
 		full_text = ""
 		num_pages = 0
@@ -49,7 +64,6 @@ def get_text(text_path):
 		text = '\n'.join(lines)
 	else:
 		raise ValueError("Invalid document path!")
-
 	text = " ".join(text.split())
 	return text
 
@@ -77,6 +91,9 @@ def store_info(text, memory_path, chunk_sz = 800, max_memory = 100):
 		raise ValueError("Processing is aborted due to high anticipated costs.")
 	for idx in tqdm(range(0, len(text), chunk_sz)):
 		chunk = " ".join(text[idx: idx + chunk_sz])
+		if len(tokenizer.encode(chunk)) > chunk_sz * 3:
+			print("Skipped an uninformative chunk.")
+			continue
 		summary = get_summary(chunk)
 		embd = get_embedding(chunk)
 		summary_embd = get_embedding(summary)
@@ -92,7 +109,6 @@ def store_info(text, memory_path, chunk_sz = 800, max_memory = 100):
 	with jsonlines.open(memory_path, mode="w") as f:
 		f.write(info)
 		print("Finish storing info.")
-
 
 def get_question():
 	q = input("Enter your question: ")
@@ -120,9 +136,6 @@ def retrieve(q_embd, info):
 	indices = top_args[0:3]
 	return indices
 
-	# sorted_top_args = sorted(indices)
-	# retrieved_text = [info[idx]["text"] for idx in sorted_top_args]
-
 def chatGPT_api(messages):
 	completion = openai.ChatCompletion.create(
 	model = 'gpt-3.5-turbo',
@@ -135,7 +148,6 @@ def chatGPT_api(messages):
 	)
 
 	return completion.choices[0].message
-
 
 def get_qa_content(q, retrieved_text):
 	content = "After reading some relevant passage fragments from the same document, please respond to the following query. Note that there may be typographical errors in the passages due to the text being fetched from a PDF file or web page."
@@ -151,25 +163,23 @@ def get_qa_content(q, retrieved_text):
 
 def generate_answer(q, retrieved_indices, info):
 	while True:
-		try:
-			sorted_indices = sorted(retrieved_indices)
-			retrieved_text = [info[idx]["text"] for idx in sorted_indices]
-			content = get_qa_content(q, retrieved_text)
-			messages = [
-				{"role": "user", "content": content}
-			]
-			answer = chatGPT_api(messages).content
-			break
-		except:
+		sorted_indices = sorted(retrieved_indices)
+		retrieved_text = [info[idx]["text"] for idx in sorted_indices]
+		content = get_qa_content(q, retrieved_text)
+		if len(tokenizer.encode(content)) > 3800:
 			retrieved_indices = retrieved_indices[:-1]
+			print("Contemplating...")
 			if not retrieved_indices:
 				raise ValueError("Failed to respond.")
-			time.sleep(3)
-			continue
+		else:
+			break
+	messages = [
+		{"role": "user", "content": content}
+	]
+	answer = chatGPT_api(messages).content
 	return answer
 
-def memorize(text_path):
-	text = get_text(text_path)
+def memorize(text):
 	sha = hashlib.sha256(text.encode('UTF-8')).hexdigest()
 	memory_path = f"memory/{sha}.json"
 	file_exists = os.path.exists(memory_path)
@@ -190,10 +200,10 @@ def chat(memory_path):
 	info = load_info(memory_path)
 	while True:
 		q = get_question()
-		if len (q.split()) > 5000:
+		if len(tokenizer.encode(q)) > 200:
 			raise ValueError("Input query is too long!")
 		response = answer(q, info)
 		print()
-		print(response)
+		print(f"{bcolors.OKGREEN}{response}{bcolors.ENDC}")
 		print()
 		time.sleep(3) # up to 20 api calls per min
