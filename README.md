@@ -7,6 +7,7 @@ This project aims to use the OpenAI API to enable the memory and understanding o
 ## Dependencies
 
 Please execute the following command in the terminal to install the required dependencies:
+Python>=3.8
 
 ```shell
 cd ChatLongDoc
@@ -29,6 +30,7 @@ In the demo.ipynb, we provide a simple and clear procedure:
 ## 环境依赖
 
 请在终端中执行以下命令，安装所需依赖：
+Python>=3.8
 
 ```shell
 cd ChatLongDoc
