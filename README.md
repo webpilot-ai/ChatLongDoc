@@ -19,10 +19,11 @@ pip install -r requirements.txt
 
 In the **demo.ipynb**, we provide a simple and clear procedure:
 
-1. Please replace the first line of the `./openai_api_key.txt` file with the OpenAI API Key you want to use. It will be read when the dependencies are loaded.
-2. Enter the local file path or web URL you want to chat with. The pdf, doc, docx, and txt formats are currently supported. You can also try the `./example/example.pdf` that we provide for toturial. The sample file is the paper [Attention Is All You Need](https://arxiv.org/abs/1706.03762).
-3. Memorize the content of the document or web page it read. The memorized information will be stored in `./memory`, where already includes the memory file of the trial document we provide.
-4. Enter your question and start chatting with the document.
+1. Please replace the first line of the `./openai_api_key.txt` file with your preferred OpenAI API Key. It will be read when the dependencies are loaded.
+2. Enter the path to the local file you wish to chat with. Our program currently supports pdf, doc, docx, txt files, and web URLs. As a tutorial, you may try the `./example/example.pdf file`, which is a paper titled ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762).
+3. Once the file is loaded, our system will process the content of the document or web page and store the memorized information in `./memory` for future reference. A memory file is already available in the directory if you're using the example document.
+4. Input your query and start chatting with the document.
+
 
 ## 欢迎使用本项目
 
@@ -43,7 +44,7 @@ pip install -r requirements.txt
 
 在 **demo.ipynb** 中我们给出了简单明了的使用步骤：
 
-1. 请先将 `./openai_api_key.txt` 文件中的第一行替换成您想要使用的 OpenAI API Key，在 demo 加载依赖的过程中会读取。
-2. 输入您想要了解的本地文档地址或网页 URL，文档格式目前支持 pdf、doc、docx、txt。也可以使用我们提供的 `./example/example.pdf` 进行试用，样例文件为论文 [Attention Is All You Need](https://arxiv.org/abs/1706.03762)。
-3. 记忆所读取的文档或网页内容，记忆后的信息会存储在 `./memory` 中，其中已经包含了我们提供的试用文档的记忆信息文件。
-4. 输入问题，开始和文档聊天吧。
+1. 请将 ./openai_api_key.txt 文件的第一行替换为您喜欢的 OpenAI API 密钥。当加载依赖项时，它将被读取。
+2. 输入您想要聊天的本地文件路径。我们的程序目前支持 pdf、doc、docx、txt 文件和 Web URL。作为教程，您可以尝试使用标题为 "Attention Is All You Need" 的论文，它位于 ./example/example.pdf 文件中。
+3. 一旦文件被加载，我们的系统将处理文档或网页的内容，并将记忆的信息存储在 ./memory 中供以后参考。如果您正在使用示例文档，已经在目录中提供了一个记忆文件。
+4. 输入您的查询并开始与文档聊天。
