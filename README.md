@@ -2,7 +2,7 @@
 
 ## Welcome to this project
 
-This project surpasses the length constraints of using OpenAI Chat-LLMs, such as ChatGPT, enabling you to converse with long documents. It expedites comprehension of the content and facilitates the acquisition of valuable insights. Compared with ChatPDF, it accommodates various file formats, including PDF, doc, docx, and web URLs. The implementation of this project is straightforward to follow, expand, and efficient for integration into other applications.
+This project surpasses the length constraints of using OpenAI Chat-LLMs, such as ChatGPT, enabling you to converse with any long document. It expedites comprehension of the content and facilitates the acquisition of valuable insights. Compared with ChatPDF, it accommodates various file formats, including PDF, doc, docx, txt, and web URLs. The implementation of this project is straightforward to follow, expand, and efficient for integration into other applications.
 
 ## Dependencies
 
@@ -26,7 +26,7 @@ In the **demo.ipynb**, we provide a simple and clear procedure:
 
 ## 欢迎使用本项目
 
-这个项目突破了使用OpenAI Chat-LLMs（如ChatGPT）的长度限制，使您能够与长文档进行对话。帮助对内容的理解，便于获取有价值的见解。与ChatPDF相比，它支持包括PDF、doc、docx和Web URL在内的各种文件格式。该项目的实现简单易懂，易于扩展，并且能够高效地集成到其他应用程序中。
+这个项目突破了使用OpenAI Chat-LLMs（如ChatGPT）的长度限制，使您能够与任何长文档进行对话。帮助对内容的理解，便于获取有价值的见解。与ChatPDF相比，它支持包括PDF、word文档、txt文件 和 网页 在内的各种文件格式。该项目的实现简单易懂，易于扩展，并且能够高效地集成到其他应用程序中。
 
 ## 环境依赖
 
