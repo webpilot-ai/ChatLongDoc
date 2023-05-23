@@ -22,7 +22,7 @@ pip install -r requirements.txt
 In the **demo.ipynb**, we provide a simple and clear procedure:
 
 1. Please replace the first line of the `./openai_api_key.txt` file with your preferred OpenAI API Key. It will be read when the dependencies are loaded.
-2. Enter the path to the local file you wish to chat with. Our program currently supports pdf, doc, docx, txt files, and web URLs. As a tutorial, you may try the `./example/example.pdf` and `./example/example2.pdf` files, which are papers titled ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) and [Uni-Encoder: A Fast and Accurate Response Selection Paradigm for Generation-Based Dialogue Systems](https://arxiv.org/abs/2106.01263).
+2. Enter the path to the local file you wish to chat with. Our program currently supports pdf, doc, docx, txt files, and web URLs. As a tutorial, you may try the `./example/example.pdf` and `./example/example2.pdf` files, which are papers titled ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) and ["Uni-Encoder: A Fast and Accurate Response Selection Paradigm for Generation-Based Dialogue Systems"](https://arxiv.org/abs/2106.01263).
 3. Once the file is loaded, our system will process the content of the document or web page and store the memorized information in `./memory` for future reference. A memory file is already available in the directory if you're using the example document.
 4. Input your query and start chatting with the document.
 
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 在 **demo.ipynb** 中我们给出了简单明了的使用步骤：
 
 1. 请将 ./openai_api_key.txt 文件的第一行替换为您喜欢的 OpenAI API 密钥。当加载依赖项时，它将被读取。
-2. 输入您想要了解的本地文档地址或网页 URL，文档格式目前支持 pdf、doc、docx、txt。也可以尝试我们提供的`./example/example.pdf`或`./example/example2.pdf`进行试用，样例文件为论文 [Attention Is All You Need](https://arxiv.org/abs/1706.03762) 和 [Uni-Encoder: A Fast and Accurate Response Selection Paradigm for Generation-Based Dialogue Systems](https://arxiv.org/abs/2106.01263)。
+2. 输入您想要了解的本地文档地址或网页 URL，文档格式目前支持 pdf、doc、docx、txt。也可以尝试我们提供的`./example/example.pdf`或`./example/example2.pdf`进行试用，样例文件为论文 ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) 和 ["Uni-Encoder: A Fast and Accurate Response Selection Paradigm for Generation-Based Dialogue Systems"](https://arxiv.org/abs/2106.01263)。
 3. 一旦文件被加载，我们的系统将处理文档或网页的内容，并将记忆的信息存储在 ./memory 中供以后参考。如果您正在使用示例文档，已经在目录中提供了一个记忆文件。
 4. 输入您的问题，开始与文档聊天吧。
 
