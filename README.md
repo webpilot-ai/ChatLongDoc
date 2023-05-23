@@ -2,7 +2,7 @@
 
 ## Welcome to this project
 
-This project aims to use the OpenAI API to enable the memory and understanding of long text documents. By conversing with the system, you can quickly understand the content in the document, breaking the limit of the maximum text length that APIs can handle. This project supports multiple file formats, including PDFs, as provided by ChatPDF, as well as doc, docx, and txt files. It also allows conversations based on the input URLs. We believe that this project is one of the simplest and most effective ways to implement and deploy.
+This project surpasses the length constraints of using OpenAI Chat-LLMs, such as ChatGPT, enabling you to converse with any long document. It expedites comprehension of the content and facilitates the acquisition of valuable insights. Compared with ChatPDF, it accommodates various file formats, including PDF, doc, docx, txt, and web URLs. The implementation of this project is straightforward to follow, expand, and efficient for integration into other applications.
 
 ## Dependencies
 
@@ -17,16 +17,17 @@ pip install -r requirements.txt
 
 ## Usage
 
-In the demo.ipynb, we provide a simple and clear procedure:
+In the **demo.ipynb**, we provide a simple and clear procedure:
 
-1. Please replace the first line of the `./openai_api_key.txt` file with the OpenAI API Key you want to use. It will be read when the dependencies are loaded.
-2. Enter the local file path or web URL you want to chat with. The pdf, doc, docx, and txt formats are currently supported. You can also try the `./example/example.pdf` that we provide for toturial. The sample file is the paper [Attention Is All You Need](https://arxiv.org/abs/1706.03762).
-3. Memorize the content of the document or web page it read. The memorized information will be stored in `./memory`, where already includes the memory file of the trial document we provide.
-4. Enter your question and start chatting with the document.
+1. Please replace the first line of the `./openai_api_key.txt` file with your preferred OpenAI API Key. It will be read when the dependencies are loaded.
+2. Enter the path to the local file you wish to chat with. Our program currently supports pdf, doc, docx, txt files, and web URLs. As a tutorial, you may try the `./example/example.pdf file`, which is a paper titled ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762).
+3. Once the file is loaded, our system will process the content of the document or web page and store the memorized information in `./memory` for future reference. A memory file is already available in the directory if you're using the example document.
+4. Input your query and start chatting with the document.
+
 
 ## 欢迎使用本项目
 
-本项目利用 OpenAI 的 API 实现了对长文本文档的记忆和理解。通过与系统进行对话，您可以快速了解文档所述内容，打破了 API 处理最长文本长度的限制。本项目支持多种文件格式，包括 ChatPDF 提供的 PDF 辅助阅读，也支持 doc、docx 和 txt 文件，同时还允许输入网址进行基于网页内容的对话。我们相信，这个项目是实现类似需求最简单有效的方法之一。
+这个项目突破了使用OpenAI Chat-LLMs（如ChatGPT）的长度限制，使您能够与任何长文档进行对话。帮助对内容的理解，便于获取有价值的见解。与ChatPDF相比，它支持包括PDF、word文档、txt文件 和 网页 在内的各种文件格式。该项目的实现简单易懂，易于扩展，并且能够高效地集成到其他应用程序中。
 
 ## 环境依赖
 
@@ -41,9 +42,9 @@ pip install -r requirements.txt
 
 ## 使用流程
 
-在 demo.ipynb 中我们给出了简单明了的使用步骤：
+在 **demo.ipynb** 中我们给出了简单明了的使用步骤：
 
-1. 请先将 `./openai_api_key.txt` 文件中的第一行替换成您想要使用的 OpenAI API Key，在 demo 加载依赖的过程中会读取。
-2. 输入您想要了解的本地文档地址或网页 URL，文档格式目前支持 pdf、doc、docx、txt。也可以使用我们提供的 `./example/example.pdf` 进行试用，样例文件为论文 [Attention Is All You Need](https://arxiv.org/abs/1706.03762)。
-3. 记忆所读取的文档或网页内容，记忆后的信息会存储在 `./memory` 中，其中已经包含了我们提供的试用文档的记忆信息文件。
-4. 输入问题，开始和文档聊天吧。
+1. 请将 ./openai_api_key.txt 文件的第一行替换为您喜欢的 OpenAI API 密钥。当加载依赖项时，它将被读取。
+2. 输入您想要聊天的本地文件路径。我们的程序目前支持 pdf、doc、docx、txt 文件和 Web URL。作为教程，您可以尝试使用标题为 "Attention Is All You Need" 的论文，它位于 ./example/example.pdf 文件中。
+3. 一旦文件被加载，我们的系统将处理文档或网页的内容，并将记忆的信息存储在 ./memory 中供以后参考。如果您正在使用示例文档，已经在目录中提供了一个记忆文件。
+4. 输入您的查询并开始与文档聊天。
