@@ -4,7 +4,7 @@
 
 This project surpasses the length constraints of using OpenAI Chat-LLMs, such as ChatGPT, enabling you to converse with any long document. It expedites comprehension of the content and facilitates the acquisition of valuable insights. Compared with ChatPDF, it accommodates various file formats, including PDF, doc, docx, txt, and web URLs. The implementation of this project is straightforward to follow, expand, and efficient for integration into other applications.
 
-You are welcome to check our [ChatGPT plugin](https://chat.openai.com/?model=gpt-4-plugins) and [Chrome exntension](https://www.webpilot.ai/).
+You are welcome to check out our [ChatGPT plugin](https://chat.openai.com/?model=gpt-4-plugins) and [Chrome exntension](https://www.webpilot.ai/).
 
 ## Dependencies
 
