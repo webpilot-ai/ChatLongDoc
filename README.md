@@ -26,7 +26,7 @@ In the **demo.ipynb**, we provide a simple and clear procedure:
 3. Once the file is loaded, our system will process the content of the document or web page and store the memorized information in `./memory` for future reference. A memory file is already available in the directory if you're using the example document.
 4. Input your query and start chatting with the document.
 
-You may also use the following command after installing all dependencies:
+You may also use the following command after installing all dependencies and adding your OpenAI API Key:
 ```shell
 cd ChatLongDoc
 python chatLongDoc.py --text_path "your_text_path" --memory_path "your_memory_path"
@@ -63,7 +63,7 @@ pip install -r requirements.txt
 3. 一旦文件被加载，我们的系统将处理文档或网页的内容，并将记忆的信息存储在 ./memory 中供以后参考。如果您正在使用示例文档，已经在目录中提供了一个记忆文件。
 4. 输入您的问题，开始与文档聊天吧。
 
-安装完所有的依赖后也可以通过指令运行程序:
+安装完所有的依赖并添加OpenAI API Key后也可以通过以下指令运行程序:
 ```shell
 cd ChatLongDoc
 python chatLongDoc.py --text_path "your_text_path" --memory_path "your_memory_path"
