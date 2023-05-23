@@ -81,32 +81,41 @@ def get_summary(chunk):
 
 	return summary
 
-def store_info(text, memory_path, chunk_sz = 800, max_memory = 100):
+def store_info(text, memory_path, chunk_sz = 700, max_memory = 100):
 	info = []
 	text = text.replace("\n", " ").split()
 	# raise error if the anticipated api usage is too massive
-	if (len(text) / chunk_sz) >= 100:
+	if (len(text) / chunk_sz) >= max_memory:
 		raise ValueError("Processing is aborted due to high anticipated costs.")
 	for idx in tqdm(range(0, len(text), chunk_sz)):
 		chunk = " ".join(text[idx: idx + chunk_sz])
 		if len(tokenizer.encode(chunk)) > chunk_sz * 3:
 			print("Skipped an uninformative chunk.")
 			continue
-		summary = get_summary(chunk)
-		embd = get_embedding(chunk)
-		summary_embd = get_embedding(summary)
-		item = {
-			"id": len(info),
-			"text": chunk,
-			"embd": embd,
-			"summary": summary,
-			"summary_embd": summary_embd,
-		}
-		info.append(item)
-		time.sleep(3)  # up to 20 api calls per min
+		attempts = 0
+		while True:
+			try:
+				summary = get_summary(chunk)
+				embd = get_embedding(chunk)
+				summary_embd = get_embedding(summary)
+				item = {
+					"id": len(info),
+					"text": chunk,
+					"embd": embd,
+					"summary": summary,
+					"summary_embd": summary_embd,
+				}
+				info.append(item)
+				time.sleep(3)  # up to 20 api calls per min
+				break
+			except Exception as e:
+				attempts += 1
+				if attempts >= 3:
+					raise Exception(f"{str(e)}")
+				time.sleep(3)
 	with jsonlines.open(memory_path, mode="w") as f:
 		f.write(info)
-		print("Finish storing info.")
+		print(f"Finish storing info in {memory_path}")
 
 def get_question():
 	q = input("Enter your question: ")
@@ -155,7 +164,7 @@ def get_qa_content(q, retrieved_text):
 	for i in range(len(retrieved_text)):
 		content += "\nPassage " + str(i + 1) + ": " + retrieved_text[i]
 
-	content += "\nAvoid explicitly using terms such as 'passage 1, 2 or 3' in your answer as the questioner may not know how the fragments are retrieved. You can use your own knowledge in addition to the provided information to enhance your response. Please use the same language as in the query to respond, to ensure that the questioner can understand."
+	content += "\nAvoid explicitly using terms such as 'passage 1, 2 or 3' in your answer as the questioner may not know how the fragments are retrieved. Please use the same language as in the query to respond."
 
 	return content
 
@@ -182,7 +191,7 @@ def memorize(text):
 	memory_path = f"memory/{sha}.json"
 	file_exists = os.path.exists(memory_path)
 	if file_exists:
-		print("Detected cached memories.")
+		print(f"Detected cached memories in {memory_path}")
 	else:
 		print("Memorizing...")
 		store_info(text, memory_path)
@@ -200,8 +209,17 @@ def chat(memory_path):
 		q = get_question()
 		if len(tokenizer.encode(q)) > 200:
 			raise ValueError("Input query is too long!")
-		response = answer(q, info)
-		print()
-		print(f"{bcolors.OKGREEN}{response}{bcolors.ENDC}")
-		print()
-		time.sleep(3) # up to 20 api calls per min
+		attempts = 0
+		while True:
+			try:
+				response = answer(q, info)
+				print()
+				print(f"{bcolors.OKGREEN}{response}{bcolors.ENDC}")
+				print()
+				time.sleep(3) # up to 20 api calls per min
+				break
+			except Exception as e:
+				attempts += 1
+				if attempts >= 3:
+					raise Exception(f"{str(e)}")
+				time.sleep(3)

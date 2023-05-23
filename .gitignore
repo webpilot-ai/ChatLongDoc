@@ -9,6 +9,8 @@
 *.html
 !example/example.pdf
 !memory/315b4f4c655530196ef5f4f6f1d1f0b57d24fa2b08ff006c44b535d50499b487.json
+!example/example2.pdf
+!memory/361427c6078a84a525e3537253e4f4b91621ee4bc8d6f6532bd123363fbe2a60.json
 !.gitkeep
 !requirements.txt
 !openai_api_key.txt
