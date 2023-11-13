@@ -10,7 +10,7 @@ def main():
         type=str,
         default=None,
         help='''Local file path or web URL.
-        e.g. 'example/example.pdf' or 'https://arxiv.org/abs/2106.01263'.
+        e.g. 'example/example.pdf' or 'https://arxiv.org/abs/1706.03762'.
         ''',
     )
     parser.add_argument(

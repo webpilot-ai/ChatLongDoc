@@ -19,21 +19,23 @@ pip install -r requirements.txt
 
 ## Usage
 
+### ChatLongDoc though code scripts
 In the **demo.ipynb**, we provide a simple and clear procedure:
 
 1. Please replace the first line of the `./openai_api_key.txt` file with your preferred OpenAI API Key. It will be read when the dependencies are loaded.
-2. Enter the path to the local file you wish to chat with. Our program currently supports pdf, doc, docx, txt files, and web URLs. As a tutorial, you may try the `./example/example.pdf` or `./example/example2.pdf` file, which are papers titled ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) and ["Uni-Encoder: A Fast and Accurate Response Selection Paradigm for Generation-Based Dialogue Systems"](https://arxiv.org/abs/2106.01263).
+2. Enter the path to the local file you wish to chat with. Our program currently supports pdf, doc, docx, txt files, and web URLs. As a tutorial, you may try the `./example/example.pdf` or `./example/example2.pdf` file, which are papers titled ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) and ["Dynamics of Instruction Tuning"](https://arxiv.org/abs/2310.19651).
 3. Once the file is loaded, our system will process the content of the document or web page and store the memorized information in `./memory` for future reference. A memory file is already available in the directory if you're using the example document.
 4. Input your query and start chatting with the document.
 
+### ChatLongDoc though shell commands
 You may also use the following command after installing all dependencies and adding your OpenAI API Key:
 ```shell
 cd ChatLongDoc
 python chatLongDoc.py --text_path "your_text_path" --memory_path "your_memory_path"
 ```
-`--text_path` is the local file path or web URL that you want to read, e.g. "example/example.pdf" or "https://arxiv.org/abs/2106.01263".
+`--text_path` is the local file path or web URL that you want to read, e.g. "example/example.pdf" or "https://arxiv.org/abs/1706.03762". If the target text is detected to have been memorized, the cached memory file will be loaded instead.
 
-If `--memory_path` is specified, then the program will only load the cached memory file instead of reprocessing texts from `--text_path`.
+If `--memory_path` is specified, then the program will directly load the cached memory file without reprocessing texts from `--text_path`.
 
 You only need to specify either one of them, please refer to `-h` for more details.
 
@@ -56,20 +58,22 @@ pip install -r requirements.txt
 
 ## 使用流程
 
+### 通过代码进行对话
 在 **demo.ipynb** 中我们给出了简单明了的使用步骤：
 
 1. 请将 ./openai_api_key.txt 文件的第一行替换为您喜欢的 OpenAI API 密钥。当加载依赖项时，它将被读取。
-2. 输入您想要了解的本地文档地址或网页 URL，文档格式目前支持 pdf、doc、docx、txt。也可以尝试我们提供的`./example/example.pdf`或`./example/example2.pdf`进行试用，样例文件为论文 ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) 和 ["Uni-Encoder: A Fast and Accurate Response Selection Paradigm for Generation-Based Dialogue Systems"](https://arxiv.org/abs/2106.01263)。
+2. 输入您想要了解的本地文档地址或网页 URL，文档格式目前支持 pdf、doc、docx、txt。也可以尝试我们提供的`./example/example.pdf`或`./example/example2.pdf`进行试用，样例文件为论文 ["Attention Is All You Need"](https://arxiv.org/abs/1706.03762) 和 ["Dynamics of Instruction Tuning"](https://arxiv.org/abs/2310.19651)。
 3. 一旦文件被加载，我们的系统将处理文档或网页的内容，并将记忆的信息存储在 ./memory 中供以后参考。如果您正在使用示例文档，已经在目录中提供了一个记忆文件。
 4. 输入您的问题，开始与文档聊天吧。
 
+### 通过命令进行对话
 安装完所有的依赖并添加OpenAI API Key后也可以通过以下指令运行程序:
 ```shell
 cd ChatLongDoc
 python chatLongDoc.py --text_path "your_text_path" --memory_path "your_memory_path"
 ```
-`--text_path`是您要读取的本地文件路径或Web URL，例如 "example/example.pdf" 或 "https://arxiv.org/abs/2106.01263" 。
+`--text_path`是您要读取的本地文件路径或Web URL，例如 "example/example.pdf" 或 "https://arxiv.org/abs/1706.03762"。 如果目标文本被检测出已被记忆过，会优先加载缓存的记忆文件。
 
-如果指定了`--memory_path`, 则程序将仅加载缓存的记忆文件，而不是重新从`--text_path`处理文本。
+如果指定了`--memory_path`, 则程序将直接加载缓存的记忆文件，而不尝试从`--text_path`处理文本。
 
 您只需指定其中一个即可，请参阅`-h`以获取更多详细信息。
