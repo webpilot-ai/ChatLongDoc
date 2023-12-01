@@ -1,10 +1,13 @@
 # ChatLongDoc
 
-## Welcome to this project
+## Overview
 
 This project surpasses the length constraints of using OpenAI Chat-LLMs, such as ChatGPT, enabling you to converse with any long document. It expedites comprehension of the content and facilitates the acquisition of valuable insights. Compared with ChatPDF, it accommodates various file formats, including PDF, doc, docx, txt, and web URLs. The implementation of this project is straightforward to follow, expand, and efficient for integration into other applications.
 
-You are welcome to check out our [ChatGPT plugin](https://chat.openai.com/?model=gpt-4-plugins) and [Chrome exntension](https://www.webpilot.ai/).
+### News
+- 🚀 **Release**: Check out the latest version of our [WebApp](https://www.webpilot.ai/)!
+- ✨ **Tools**: Explore our [GPTs, ChatGPT Plugin, and Browser Extension](https://www.webpilot.ai/post-gpts/).
+- 📖 **Guide**: Learn about deploying [Chinese Chat-LLMs](https://github.com/ChiyuSONG/data-efficient-training-of-LLMs).
 
 ## Dependencies
 
@@ -39,11 +42,14 @@ If `--memory_path` is specified, then the program will directly load the cached 
 
 You only need to specify either one of them, please refer to `-h` for more details.
 
-## 欢迎使用本项目
+## 总览
 
 这个项目突破了使用OpenAI Chat-LLMs（如ChatGPT）的长度限制，使您能够与任何长文档进行对话。帮助对内容的理解，便于获取有价值的见解。与ChatPDF相比，它支持包括PDF、word文档、txt文件 和 网页 在内的各种文件格式。该项目的实现简单易懂，易于扩展，并且能够高效地集成到其他应用程序中。
 
-欢迎关注我们的 [ChatGPT plugin](https://chat.openai.com/?model=gpt-4-plugins) 和 [Chrome扩展](https://www.webpilot.ai/)。
+### 新鲜事
+- 🚀 **发布**: 欢迎使用我们最新版本的[WebApp](https://www.webpilot.ai/)！
+- ✨ **工具**: 探索我们的[GPTs、ChatGPT插件 和 浏览器扩展](https://www.webpilot.ai/post-gpts/)。
+- 📖 **指南**: 部署[中文对话大模型](https://github.com/ChiyuSONG/data-efficient-training-of-LLMs)的参考。
 
 ## 环境依赖
 
